@@ -1,0 +1,80 @@
+/* CSS Document */
+ #form1 {
+		background-color:#FFFFFF;
+		color:#CCCCCC;
+		padding:10px;
+		width:950px; 
+		height:auto;
+		float:left;
+		margin-top:30px;
+		margin-left:150px;
+		//border:#FF0000 solid 3px;
+		-moz-border-radius: 10px;
+		-webkit-border-radius: 10px;
+		border-radius: 10px;
+		}
+
+	#form1 ol li {
+		background-color:white;
+		border:none;
+		list-style:none;
+		float:left;
+		margin-left:0px;
+		
+		}
+		
+		
+	#form1 label {
+		float:left;
+		list-style:none;
+		font-size:14px;
+		font-style:italic;
+		font-family:Georgia, "Times New Roman", Times, serif;
+		font-weight:bold;
+		color:black;
+		width: 150px;
+
+		}	
+		
+	#form1 input:not([type=radio]),form#form1 textarea{
+		background:#CC6699
+		border:#666666 solid 1px;
+		-moz-border-radius: 10px;
+		-webkit-border-radius: 10px;
+		-khtml-border-radius: 10px;
+		border-radius: 10px;
+		font: italic 12px Georgia,"Times New Roman", Times, serif;
+		outline:5px;
+		padding:5px;
+		width: 150px;
+}	
+	 #form1 select {
+	 	
+		border:#666666 solid 1px;
+		-moz-border-radius: 5px;
+		-webkit-border-radius: 5px;
+		-khtml-border-radius: 5px;
+		border-radius: 5px;
+		font:italic Georgia, "Times New Roman", Times, serif;
+		outline:none;
+		padding:5px;
+		width:150px;
+	 	}
+		
+	#form1 button {
+		background-color:#F13B0A;
+		color:#000;
+		float:left;
+		margin-left:20px;
+		margin-bottom:20px;
+		padding:8px;
+		border:none;
+		-moz-border-radius: 30px;
+		-webkit-border-radius: 30px;
+		border-radius: 30px;
+		width:150px;
+		font-size:20px;
+		font-family:"Times New Roman", Times, serif;
+		}
+
+

@@ -1,0 +1,351 @@
+<html>
+<head>
+<?php
+$con=mysql_connect("localhost","root",NULL)or die ("Some Problems are there");
+$db=mysql_select_db("railway",$con)or die(mysql_error());
+$train_query = mysql_query("SELECT start_from_station  FROM `train_details`") or die(mysql_error());
+$ls_query = mysql_query("SELECT last_station  FROM `train_details`") or die(mysql_error());
+?>
+
+
+<style>
+ #form1 {
+		background-color:#FFFFFF;
+		color:#CCCCCC;
+		padding:10px;
+		width:950px; 
+		height:400px;
+		float:left;
+		margin-top:30px;
+		margin-left:150px;
+		border:#FF0000 solid 3px;
+		-moz-border-radius: 10px;
+		-webkit-border-radius: 10px;
+		border-radius: 10px;
+		}
+
+	#form1 ol li {
+		background-color:white;
+		border:none;
+		list-style:none;
+		float:left;
+		margin-left:0px;
+		
+		}
+		
+		
+	#form1 label {
+		float:left;
+		list-style:none;
+		font-size:14px;
+		font-style:italic;
+		font-family:Georgia, "Times New Roman", Times, serif;
+		font-weight:bold;
+		color:black;
+		width: 150px;
+
+		}	
+		
+	#form1 input:not([type=radio]),form#form1 textarea{
+		background:#CC6699
+		border:#666666 solid 1px;
+		-moz-border-radius: 10px;
+		-webkit-border-radius: 10px;
+		-khtml-border-radius: 10px;
+		border-radius: 10px;
+		font: italic 12px Georgia,"Times New Roman", Times, serif;
+		outline:5px;
+		padding:5px;
+		width: 150px;
+}	
+	 #form1 select {
+	 	
+		border:#666666 solid 1px;
+		-moz-border-radius: 5px;
+		-webkit-border-radius: 5px;
+		-khtml-border-radius: 5px;
+		border-radius: 5px;
+		font:italic Georgia, "Times New Roman", Times, serif;
+		outline:none;
+		padding:5px;
+		width:150px;
+	 	}
+		
+	#form1 button {
+		background-color:#F13B0A;
+		color:#000;
+		float:left;
+		margin-left:20px;
+		margin-bottom:20px;
+		padding:8px;
+		border:none;
+		-moz-border-radius: 30px;
+		-webkit-border-radius: 30px;
+		border-radius: 30px;
+		width:150px;
+		font-size:20px;
+		font-family:"Times New Roman", Times, serif;
+		}
+		
+		
+		
+		#form2 {
+		background-color:#FFFFFF;
+		color:#CCCCCC;
+		padding:10px;
+		width:950px; 
+		height:80px;
+		float:left;
+		margin-top:30px;
+		margin-left:150px;
+		border:#FF0000 solid 3px;
+		-moz-border-radius: 10px;
+		-webkit-border-radius: 10px;
+		border-radius: 10px;
+		}
+
+	#form2 ol li {
+		background-color:white;
+		border:none;
+		list-style:none;
+		float:left;
+		margin-left:0px;
+		
+		}
+		
+		
+	#form2 label {
+		float:left;
+		list-style:none;
+		font-size:14px;
+		font-style:italic;
+		font-family:Georgia, "Times New Roman", Times, serif;
+		font-weight:bold;
+		color:black;
+		width: 150px;
+
+		}	
+		
+	#form2 input:not([type=radio]),form#form1 textarea{
+		background:#CC6699
+		border:#666666 solid 1px;
+		-moz-border-radius: 10px;
+		-webkit-border-radius: 10px;
+		-khtml-border-radius: 10px;
+		border-radius: 10px;
+		font: italic 12px Georgia,"Times New Roman", Times, serif;
+		outline:5px;
+		padding:5px;
+		width: 150px;
+}	
+	 #form2 select {
+	 	
+		border:#666666 solid 1px;
+		-moz-border-radius: 5px;
+		-webkit-border-radius: 5px;
+		-khtml-border-radius: 5px;
+		border-radius: 5px;
+		font:italic Georgia, "Times New Roman", Times, serif;
+		outline:none;
+		padding:5px;
+		width:150px;
+	 	}
+		
+	#form2 button {
+		background-color:#F13B0A;
+		color:#000;
+		float:left;
+		margin-left:20px;
+		margin-bottom:20px;
+		padding:8px;
+		border:none;
+		-moz-border-radius: 30px;
+		-webkit-border-radius: 30px;
+		border-radius: 30px;
+		width:150px;
+		font-size:20px;
+		font-family:"Times New Roman", Times, serif;
+		}
+
+ </style>
+</head>
+ <body>
+
+ <form name="form2" id="form2">
+ <tr>
+<ol>
+ 	<li><label for="train code">Train Code</label></li>
+	<li>
+	
+	
+	
+	<input type="text" id="text1" name="tname" reqiured=""/></li>
+	<li><input type="button" name="submit" id="submit" value="Search"></li>
+	
+</ol>
+<ol>
+ 	<li><label for="train Code">Train Name</label></li>
+ 	<li><input type="text" id="text2" name="tcode" reqiured=""/></li>
+ </ol>
+ 
+ 
+ </tr>
+ 
+ 
+ </form>
+ <form name="form1" id="form1" method="post" action="booking.php">
+ <tr>
+ 	<ol>
+	<li><label for="doj">Date Of Journey</label></li>
+	<li><input type="Date" id="text3" name="doj" reqiured=""/></li>
+	</ol>
+	<ol>
+  <li>
+    <label for="Boarding"> Boarding From </label>
+  </li>
+  <li><input type="text" id="text4" name="boardfrom" reqiured="" /></li>
+  </ol>
+</tr>
+
+<tr>
+<ol>
+	<li><label for="Up to Place">Up To Place</label></li>
+	<li><input type="text" id="text5" name="uptoplace" reqiured="" /></li>
+</ol>
+
+<ol>
+	<li><label for="train name">Class</label></li>
+ 	<li><select name="pclass" id="text6" />
+	<option value="None">None</option>
+ 	<option value="Sleeper">Sleeper</option>
+ 	<option value="AC Class">AC Class</option>
+ 	<option value="Two Tier">Two Tier</option>
+ 	<option value="Three Tier">Three Class</option>
+ 	</select>
+	</li>
+ </ol>
+
+</tr>
+
+<tr> 
+ <ol>
+	<li><label for="No of Pass">No of Passengers</label></li>
+ 	<li><select name="numpass" id="text7" />
+ 	<option value="1">1</option>
+ 	<option value="2">2</option>
+ 	<option value="3">3</option>
+ 	<option value="4">4</option>
+	<option value="5">5</option>
+	<option value="6">6</option>
+ 	</select></li>
+ </ol>
+
+ </tr>
+
+<br /><br /><br /><br /><br /><br />
+ 
+ <table border="0" align="center">
+ <tr>
+<th>Passenger Name</th><th>Age</th><th>Gender</th><th>Sr. Citizen Ship</th><th>Fare</th></tr>
+
+<td><input type="text" id="text1" name="pass1"></td>
+<td><input type="text" id="text2" name="age1"></td>
+<td align="center"><select name="gen1" id="gender">
+<option value="None">None</option>
+<option value="Male">Male</option>
+<option value="Female">Female</option>
+</select></td>
+<td align="center"><select name="citi1" id="citizen">
+<option value="None">None</option>
+<option value="Yes">Yes</option>
+<option value="No">No</option>
+</select></td>
+<td><input type="text" id="text3" name="fare1"></td>
+</tr>
+<tr>
+<td><input type="text" id="text4" name="pass2"></td>
+<td><input type="text" id="text5" name="age2"></td>
+<td align="center"><select name="gen2" id="gender">
+<option value="None">None</option>
+<option value="Male">Male</option>
+<option value="Female">Female</option>
+</select></td>
+<td align="center"><select name="citi2" id="citizen">
+<option value="None">None</option>
+<option value="Yes">Yes</option>
+<option value="No">No</option>
+</select></td>
+<td><input type="text" id="text6" name="fare2"></td>
+</tr>
+
+<tr>
+<td><input type="text" id="text10" name="pass3"></td>
+<td><input type="text" id="text11" name="age3"></td>
+
+<td align="center"><select name="gen3" id="gender">
+<option value="None">None</option>
+<option value="Male">Male</option>
+<option value="Female">Female</option>
+</select></td>
+</td>
+<td align="center"><select name="citi3" id="citizen">
+<option value="None">None</option>
+<option value="Yes">Yes</option>
+<option value="No">No</option>
+</select></td>
+<td><input type="text" id="text8" name="fare3"></td>
+</tr>
+<tr>
+<td><input type="text" id="text9" name="pass4"></td>
+<td><input type="text" id="text10" name="age4"></td>
+<td align="center"><select name="gen4" id="gender">
+<option value="None">None</option>
+<option value="Male">Male</option>
+<option value="Female">Female</option>
+</select></td>
+</td><td align="center"><select name="citi4" id="citizen">
+<option value="None">None</option>
+<option value="Yes">Yes</option>
+<option value="No">No</option>
+</select></td>
+<td><input type="text" id="text11" name="fare4"></td>
+</tr>
+<tr>
+<td><input type="text" id="text12" name="pass5"></td>
+<td><input type="text" id="text13" name="age5"></td>
+<td align="center"><select name="gen5" id="gender">
+<option value="None">None</option>
+<option value="Male">Male</option>
+<option value="Female">Female</option>
+</select></td>
+</td><td align="center"><select name="citi5" id="citizen">
+<option value="None">None</option>
+<option value="Yes">Yes</option>
+<option value="No">No</option>
+</select></td>
+<td><input type="text" id="text14" name="fare5"></td>
+</tr>
+<tr>
+<td><input type="text" id="text15" name="pass6"></td>
+<td><input type="text" id="text16" name="age6"></td>
+<td align="center"><select name="gen6" id="gender">
+<option value="None">None</option>
+<option value="Male">Male</option>
+<option value="Female">Female</option>
+</select></td>
+</td><td align="center"><select name="citi6" id="citizen">
+<option value="None">None</option>
+<option value="Yes">Yes</option>
+<option value="No">No</option>
+</select></td>
+<td><input type="text" id="text17" name="fare6"></td>
+</tr>
+<th align="center"><input type="submit" name="submit" id="submit" value="BOOK NOW"></th>
+<th>Total Fare</th><th><input type="text" id="text18" name="tfare"></th>
+
+</table>
+</tr>
+</tr>
+</form>
+</body>
+</html>
